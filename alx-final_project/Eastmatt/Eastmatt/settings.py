@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
-    'orders.apps.OrdersConfig'
+    'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
+    'coupons.apps.CouponsConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -131,3 +134,12 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Mzle8K2S4YF82yI5YdcqvkiFlCCQucOqrrU0SdY2mPL9jPlL7luaToZYjhjZzsrDFuYjhosmXHDhUYQASdZm4JF00cclchmaQ'
+STRIPE_SECRET_KEY = 'sk_test_51Mzle8K2S4YF82yIlgmj0Vdn3h4ZxFYENALakwMABQLO6zReioDUjphETDrkKgV5jZnZnL3EEsIiUV5SZEHOohcO00gnhfn9cy'
+STRIPE_API_VERSION = '2022-08-01'
+STRIPE_WEBHOOK_SECRET = 'whsec_a2bdd98a3f2a6ecbd7c212877b0da4ffa3b9d8fdda4f443bc91b350079b6c323'
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
