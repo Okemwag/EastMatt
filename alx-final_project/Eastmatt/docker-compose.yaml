@@ -1,0 +1,31 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - rabbitmq
+      - flower
+
+  redis:
+    image: redis
+
+  rabbitmq:
+    image: rabbitmq
+
+  flower:
+    image: mher/flower
+    ports:
+      - "5555:5555"
+    command: flower --port=5555 --broker=amqp://guest:guest@rabbitmq//
+
+  celery:
+    build:
+      context: .
+    command: celery -A Eastmatt worker --loglevel=info
+    depends_on:
+      - redis
+      - rabbitmq
